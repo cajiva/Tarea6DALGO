@@ -8,11 +8,11 @@
 	BellmanFord (milliseconds): <br />
 	Dijkstra (milliseconds): <br />
 	FloydWarshall (milliseconds):<br />
-3. Distancias100:<br />
+2. Distancias100:<br />
 	BellmanFord (milliseconds): 78 <br />
 	Dijkstra (milliseconds): 69 <br />
 	FloydWarshall (milliseconds): 69 <br />
-3.Distancias1000: <br />
+3. Distancias1000: <br />
 	BellmanFord (milliseconds): <br />
 	Dijkstra (milliseconds): <br />
 	FloydWarshall (milliseconds): <br />
