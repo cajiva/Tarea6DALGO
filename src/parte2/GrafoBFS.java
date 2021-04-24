@@ -81,6 +81,7 @@ public class GrafoBFS {
 			pos++; // paso de line y paso de vertice.
 
 		}
+		scanner.close();
 
 		GrafoBFS graph = new GrafoBFS(adj);
 
