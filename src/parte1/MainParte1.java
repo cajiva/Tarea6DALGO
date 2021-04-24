@@ -10,7 +10,7 @@ import parte2.GrafoBFS;
 import parte2.Queue;
 
 public class MainParte1 {
-	
+
 	public static void main(String[] args) throws FileNotFoundException {
 
 		File grafo = new File ("./data/distances5.txt");
@@ -30,12 +30,12 @@ public class MainParte1 {
 				for (int i = 0; i < adj.length; i++) {
 					adj[i] = new ArrayList<>();
 				}
-				
+
 				pesos = new ArrayList[s.length];
 				for (int i = 0; i < pesos.length; i++) {
 					pesos[i] = new ArrayList<>();
 				}
-				
+
 				inic = true; // arreglos inicializados
 			}
 			for(int i = 0 ;i < s.length;i++){
@@ -49,20 +49,39 @@ public class MainParte1 {
 
 		}	
 		scanner.close();
-		
-		int[][] matriz = new int[adj.length][adj.length]; // matriz costos minimos
-		
+
+		int[][] mBF = new int[adj.length][adj.length]; // matriz costos minimos
+
 		for (int i = 0; i < adj.length; i++) {
 			BellmanFord bf = new BellmanFord(adj, pesos, i);
 			int[] costosMin = bf.retornarCostosMin();
-			matriz[i] = costosMin; // le agrego la fila a la matriz
+			mBF[i] = costosMin; // le agrego la fila a la matriz
 		}
-		
+
+		System.out.println("Matriz Costos Mínimos BellmanFord");
 		for (int i = 0; i < adj.length; i++) {
 			for (int j = 0; j < adj.length; j++) {
-				System.out.printf("%5d",matriz[i][j]);
+				System.out.printf("%5d",mBF[i][j]);
 			}
 			System.out.println();
 		}	
+
+		int[][] mD = new int[adj.length][adj.length]; // matriz costos minimos
+
+		for (int i = 0; i < adj.length; i++) {
+			Dijkstra dij = new Dijkstra(adj, pesos, i);
+			int[] costosMin = dij.retornarCostosMin();
+			mD[i] = costosMin; // le agrego la fila a la matriz
+		}
+
+		System.out.println();
+		System.out.println("Matriz Costos Mínimos Dijkstra");
+		for (int i = 0; i < adj.length; i++) {
+			for (int j = 0; j < adj.length; j++) {
+				System.out.printf("%5d",mD[i][j]);
+			}
+			System.out.println();
+		}	
+
 	}
 }
