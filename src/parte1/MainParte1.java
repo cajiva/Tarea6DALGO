@@ -60,15 +60,15 @@ public class MainParte1 {
 		}
 		long etBF = System.currentTimeMillis();
 		
-		System.out.println("Tiempo ejecucion BellmanFord (milliseconds): "+(etBF-stBF));
-
-		System.out.println("Matriz Costos Mínimos BellmanFord");
-		for (int i = 0; i < adj.length; i++) {
-			for (int j = 0; j < adj.length; j++) {
-				System.out.printf("%5d",mBF[i][j]);
-			}
-			System.out.println();
-		}	
+//		System.out.println("Tiempo ejecucion BellmanFord (milliseconds): "+(etBF-stBF));
+//
+//		System.out.println("Matriz Costos Mínimos BellmanFord");
+//		for (int i = 0; i < adj.length; i++) {
+//			for (int j = 0; j < adj.length; j++) {
+//				System.out.printf("%5d",mBF[i][j]);
+//			}
+//			System.out.println();
+//		}	
 
 		int[][] mD = new int[adj.length][adj.length]; // matriz costos minimos
 
@@ -81,15 +81,15 @@ public class MainParte1 {
 		long etD = System.currentTimeMillis();
 		System.out.println("Tiempo ejecucion Dijkstra (milliseconds): "+(etD-stD));
 
-		System.out.println();
-		System.out.println("Matriz Costos Mínimos Dijkstra");
-		for (int i = 0; i < adj.length; i++) {
-			for (int j = 0; j < adj.length; j++) {
-				System.out.printf("%5d",mD[i][j]);
-			}
-			System.out.println();
-		}	
-		
+//		System.out.println();
+//		System.out.println("Matriz Costos Mínimos Dijkstra");
+//		for (int i = 0; i < adj.length; i++) {
+//			for (int j = 0; j < adj.length; j++) {
+//				System.out.printf("%5d",mD[i][j]);
+//			}
+//			System.out.println();
+//		}	
+//		
 		long stFW = System.currentTimeMillis();
 		FloydWarshall fw = new FloydWarshall(adj, pesos);
 		long etFW = System.currentTimeMillis();

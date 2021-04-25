@@ -35,7 +35,7 @@ public class FloydWarshall {
 		for (int i = 0; i < nV; i++) {
 			//con 0 hasta i como vertices intermedios
 			for (int s = 0; s < nV ; s++) {
-				if(costos[s][i] == Integer.MAX_VALUE || costos[s][i] == 0) continue;
+				if(costos[s][i] == Integer.MAX_VALUE || i == s) continue;
 				for (int d = 0; d < nV; d++) {
 					if(costos[i][d] == Integer.MAX_VALUE) continue;
 					if(costos[s][d] > costos[s][i] + costos[i][d])
