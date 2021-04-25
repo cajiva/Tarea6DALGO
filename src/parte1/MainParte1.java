@@ -60,7 +60,7 @@ public class MainParte1 {
 		}
 		long etBF = System.currentTimeMillis();
 		
-//		System.out.println("Tiempo ejecucion BellmanFord (milliseconds): "+(etBF-stBF));
+		System.out.println("Tiempo ejecucion BellmanFord (milliseconds): "+(etBF-stBF));
 //
 //		System.out.println("Matriz Costos Mínimos BellmanFord");
 //		for (int i = 0; i < adj.length; i++) {
@@ -96,14 +96,14 @@ public class MainParte1 {
 		System.out.println("Tiempo ejecucion FloydWarshall (milliseconds): "+(etFW-stFW));
 		
 		
-		System.out.println();
-		System.out.println("Matriz Costos Mínimos FloydWarshall");
-		int [][] matrizFW = fw.retornarCostosMin();
-		for (int i = 0; i < matrizFW.length; i++) {
-			for (int j = 0; j < matrizFW.length; j++) {
-				System.out.printf("%5d",matrizFW[i][j]);
-			}
-			System.out.println();
-		}	
+//		System.out.println();
+//		System.out.println("Matriz Costos Mínimos FloydWarshall");
+//		int [][] matrizFW = fw.retornarCostosMin();
+//		for (int i = 0; i < matrizFW.length; i++) {
+//			for (int j = 0; j < matrizFW.length; j++) {
+//				System.out.printf("%5d",matrizFW[i][j]);
+//			}
+//			System.out.println();
+//		}	
 	}
 }
