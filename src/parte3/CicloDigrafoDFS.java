@@ -109,4 +109,5 @@ public class CicloDigrafoDFS {
 			}
 		}
 	}
+	// falta implementar el orden topologico en caso de que no haya ciclo.
 }

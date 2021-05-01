@@ -13,7 +13,7 @@ public class MainParte1 {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		File grafo = new File ("./data/distances1000.txt");
+		File grafo = new File ("./data/distances1000_202110.txt");
 		Scanner scanner = new Scanner(grafo);
 
 		ArrayList<Integer>[] adj = null; // lista con tamaño = # vertices con arreglos que llevan
@@ -59,16 +59,19 @@ public class MainParte1 {
 			mBF[i] = costosMin; // le agrego la fila a la matriz
 		}
 		long etBF = System.currentTimeMillis();
-		
+
 		System.out.println("Tiempo ejecucion BellmanFord (milliseconds): "+(etBF-stBF));
-//
-//		System.out.println("Matriz Costos Mínimos BellmanFord");
-//		for (int i = 0; i < adj.length; i++) {
-//			for (int j = 0; j < adj.length; j++) {
-//				System.out.printf("%5d",mBF[i][j]);
-//			}
-//			System.out.println();
-//		}	
+		//
+		System.out.println("Matriz Costos Mínimos BellmanFord");
+		for (int i = 0; i < adj.length; i++) {
+			for (int j = 0; j < adj.length; j++) {
+				if(mBF[i][j] == Integer.MAX_VALUE)
+					System.out.print(" inf ");
+				else	
+					System.out.printf("%5d",mBF[i][j]);
+			}
+			System.out.println();
+		}	
 
 		int[][] mD = new int[adj.length][adj.length]; // matriz costos minimos
 
@@ -81,29 +84,35 @@ public class MainParte1 {
 		long etD = System.currentTimeMillis();
 		System.out.println("Tiempo ejecucion Dijkstra (milliseconds): "+(etD-stD));
 
-//		System.out.println();
-//		System.out.println("Matriz Costos Mínimos Dijkstra");
-//		for (int i = 0; i < adj.length; i++) {
-//			for (int j = 0; j < adj.length; j++) {
-//				System.out.printf("%5d",mD[i][j]);
-//			}
-//			System.out.println();
-//		}	
-//		
+		System.out.println();
+		System.out.println("Matriz Costos Mínimos Dijkstra");
+		for (int i = 0; i < adj.length; i++) {
+			for (int j = 0; j < adj.length; j++) {
+				if(mD[i][j] == Integer.MAX_VALUE)
+					System.out.print(" inf ");
+				else
+					System.out.printf("%5d",mD[i][j]);
+			}
+			System.out.println();
+		}	
+		//		
 		long stFW = System.currentTimeMillis();
 		FloydWarshall fw = new FloydWarshall(adj, pesos);
 		long etFW = System.currentTimeMillis();
 		System.out.println("Tiempo ejecucion FloydWarshall (milliseconds): "+(etFW-stFW));
-		
-		
-//		System.out.println();
-//		System.out.println("Matriz Costos Mínimos FloydWarshall");
-//		int [][] matrizFW = fw.retornarCostosMin();
-//		for (int i = 0; i < matrizFW.length; i++) {
-//			for (int j = 0; j < matrizFW.length; j++) {
-//				System.out.printf("%5d",matrizFW[i][j]);
-//			}
-//			System.out.println();
-//		}	
+
+
+		System.out.println();
+		System.out.println("Matriz Costos Mínimos FloydWarshall");
+		int [][] matrizFW = fw.retornarCostosMin();
+		for (int i = 0; i < matrizFW.length; i++) {
+			for (int j = 0; j < matrizFW.length; j++) {
+				if(matrizFW[i][j] == Integer.MAX_VALUE)
+					System.out.print(" inf ");
+				else	
+					System.out.printf("%5d",matrizFW[i][j]);
+			}
+			System.out.println();
+		}	
 	}
 }
