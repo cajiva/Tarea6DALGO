@@ -12,6 +12,9 @@ public class CicloDigrafoDFS {
 	boolean[] marcados; // marcados[v] = true si ya se hizo dfs sobre v.
 	Stack<Integer> pilaCiclo; // pila que guarda los vertices recorridos en el ciclo, null si no se forma ningun ciclo.
 	int[] padre; // padre[v] = vertice de donde acaba de llegar a v.
+	static int cantidadV; //#de vertices en el grafo
+	static ArrayList<Integer>[] adj = null; // lista con tamaï¿½o = # vertices con arreglos que llevan
+	//los vertices a los que el vertice en la pos. se conecta.
 	
 	public CicloDigrafoDFS(ArrayList<Integer>[] adj) {
 		
@@ -64,11 +67,10 @@ public class CicloDigrafoDFS {
 	}
 		
 	public static void main(String[] args) throws FileNotFoundException {
-		File grafo = new File ("./data/distances100.txt");
+		File grafo = new File ("./data/distances1000_202110_costosminimos.txt");
 		Scanner scanner = new Scanner(grafo);
 
-		ArrayList<Integer>[] adj = null; // lista con tamaño = # vertices con arreglos que llevan
-		//los vertices a los que el vertice en la pos. se conecta.
+		
 		int pos = 0;
 		boolean inic = false; // arreglos inicializados?
 		while(scanner.hasNextLine())
@@ -77,6 +79,7 @@ public class CicloDigrafoDFS {
 			if(!inic)
 			{
 				adj = new ArrayList[s.length];
+				cantidadV = s.length;
 				for (int i = 0; i < adj.length; i++) {
 					adj[i] = new ArrayList<>();
 				}
@@ -98,8 +101,11 @@ public class CicloDigrafoDFS {
 			System.out.println("Tiene ciclo");
 			System.out.println();
 		}
-		else
+		else {
 			System.out.println("No tiene ciclo");
+			ciclo.ordenTopologico();
+		}
+			
 			
 		if(ciclo.tieneCiclo())
 		{
@@ -110,4 +116,39 @@ public class CicloDigrafoDFS {
 		}
 	}
 	// falta implementar el orden topologico en caso de que no haya ciclo.
+
+	public void ordenTopologico() {
+		int[] pre = new int [cantidadV];
+		int[] post = new int [cantidadV];
+		Queue<Integer> postorder = new Queue<Integer>();
+		Queue<Integer> preorder = new Queue<Integer>();
+		boolean[] marcado = new boolean [cantidadV];
+		int preCounter = 0;            
+	    int postCounter = 0;
+	    Iterable<Integer> order;
+	    
+		for(int v= 0; v<cantidadV; v++) {
+			if(!marcado[v]) {
+				dfs(v, marcado, pre, post, preCounter, postCounter, preorder, postorder);
+			}
+		}
+		Stack<Integer> reverse = new Stack<Integer>();
+		for(int v: postorder)
+			reverse.push(v);
+		order = reverse;
+		for(int v: order)
+			System.out.println(v + "");
+	}
+	
+	private void dfs(int v, boolean[] marcado, int[] pre, int[]post, int preCounter, int postCounter, Queue<Integer> preorder, Queue<Integer> postorder ) {
+		marcado[v] = true;
+		pre[v] = preCounter++;
+		preorder.enqueue(v);
+		for(int w: adj[v]) {
+			if(!marcado[w])
+				dfs(w, marcado, pre, post, preCounter, postCounter, preorder, postorder);
+		}
+		postorder.enqueue(v);
+		post[v] = postCounter++;
+	}
 }
