@@ -86,7 +86,7 @@ public class GrafoBFS {
 		GrafoBFS graph = new GrafoBFS(adj);
 
 		int n = graph.darCont(); // numero de componentes conectados
-		System.out.println("# Componentes: "+n);
+		System.out.println("Número de Componentes: "+n);
 
 		Queue<Integer>[] components = (Queue<Integer>[]) new Queue[n]; //arr de colas con los comp.
 

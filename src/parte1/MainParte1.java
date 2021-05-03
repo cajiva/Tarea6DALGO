@@ -13,7 +13,7 @@ public class MainParte1 {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		File grafo = new File ("./data/distances1000_202110.txt");
+		File grafo = new File ("./data/distances5.txt");
 		Scanner scanner = new Scanner(grafo);
 
 		ArrayList<Integer>[] adj = null; // lista con tamaño = # vertices con arreglos que llevan
@@ -72,6 +72,7 @@ public class MainParte1 {
 			}
 			System.out.println();
 		}	
+		System.out.println();
 
 		int[][] mD = new int[adj.length][adj.length]; // matriz costos minimos
 
@@ -95,6 +96,7 @@ public class MainParte1 {
 			}
 			System.out.println();
 		}	
+		System.out.println();
 		//		
 		long stFW = System.currentTimeMillis();
 		FloydWarshall fw = new FloydWarshall(adj, pesos);

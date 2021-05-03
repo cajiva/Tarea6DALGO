@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import parte2.Queue;
+
 public class CicloDigrafoDFS {
 	
 	boolean[] enDfs; // marca los vertices usados en un dfs, en caso de que a partir de un hijo y sus hijos se vuelva a llegar al padre formando un ciclo.
@@ -67,7 +69,7 @@ public class CicloDigrafoDFS {
 	}
 		
 	public static void main(String[] args) throws FileNotFoundException {
-		File grafo = new File ("./data/distances1000_202110_costosminimos.txt");
+		File grafo = new File ("./data/sinCiclos.txt");
 		Scanner scanner = new Scanner(grafo);
 
 		
@@ -115,7 +117,6 @@ public class CicloDigrafoDFS {
 			}
 		}
 	}
-	// falta implementar el orden topologico en caso de que no haya ciclo.
 
 	public void ordenTopologico() {
 		int[] pre = new int [cantidadV];
